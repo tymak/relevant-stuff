@@ -1,0 +1,65 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 20px;
+}
+
+body {
+  background: url(img/norris2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+button {
+  width: 100%;
+  border-radius: 2rem;
+}
+h1,
+h2 {
+  text-align: center;
+}
+.containerCitaty {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .categoryList {
+    width: 20vw;
+    margin: 5px;
+
+    .nadpis {
+      font-size: 1.5 rem;
+    }
+  }
+  .monoCitatContainer {
+    .monoCitat {
+      margin-top: 200px;
+      margin-bottom: 50px;
+      width: 60vw;
+      font-size: 2rem;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+    }
+    button {
+      width: 40%;
+      height: 10vh;
+      margin: 5px;
+      font-size: 2rem;
+    }
+  }
+}
+.input {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+  button {
+    width: 20vw;
+    margin: 5px;
+  }
+}

@@ -1,0 +1,55 @@
+body {
+  background-color: grey;
+}
+/* .stage{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+} */
+.stage {
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template: repeat(14, 1fr) / repeat(14, 1fr);
+  width: 600px;
+  height: 600px;
+  border: 2px solid black;
+}
+.class1 {
+  background-color: white;
+}
+.class2 {
+  background-color: blue;
+}
+.class3 {
+  background-color: red;
+}
+.class4 {
+  background-color: green;
+}
+.class5 {
+  background-color: yellow;
+}
+.class6 {
+  background-color: violet;
+}
+.class7 {
+  background-color: white;
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+
+  margin: 50px auto;
+}
+button {
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+}
+.kroky {
+  text-align: center;
+}
