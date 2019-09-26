@@ -1,83 +1,59 @@
-const vstupniData = {
-    listofAdres: [],
-    listofId: []
-};
-fetch("./map/api")
-    .then(response => response.json())
 
-    //prevod dat na spravny tvar
-    .then(data => {
-        data.map(element => {
-            const adresa =
-                `${element.street}` +
-                ` ` +
-                `${element.house_number}` +
-                `,` +
-                `${element.postal}` +
-                `,` +
-                `${element.city}`;
 
-            vstupniData.listofAdres.push(adresa);
-            vstupniData.listofId.push(element.id);
-        });
 
-        //**********************************************- */
-        //vytvoreni nove mapy
-        const center = SMap.Coords.fromWGS84(14.4304, 50.07975);
-        const map = new SMap(JAK.gel("map"), center, 11, {
-            height: "50vh",
-            width: "100vw"
-        });
+const scriptPromise = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    document.body.appendChild(script);
+    script.onload = resolve;
+    script.onerror = reject;
+    script.async = true;
+    script.src = 'https://api.mapy.cz/loader.js"';
+   
+  })
+  scriptPromise.then(fetch("./test/map/api")).then(res=>res.json).then(()=>{
+  
+    
+    console.log(scriptPromise)
+    const listofAdress=["U hajovny 11, 18200, Praha","Václavské náměstí 1, Praha",]
+    console.log("jsme v tady res")
 
-        map.addDefaultLayer(SMap.DEF_BASE).enable();
-        map.addDefaultControls();
 
-        const layer = new SMap.Layer.Marker();
-        map.addLayer(layer);
-        layer.enable();
-        //*************************************** */
-        // vytvoreni sady markerů z listu adres
-        for (let i = 0; i < vstupniData.listofAdres.length; i++) {
-            console.log("hello");
-            new SMap.Geocoder(vstupniData.listofAdres[i], odpoved, {
-                card_id: vstupniData.listofId[i]
-            });
-        }
-        // vytvoreni jednotlivych markerů
+    const center =SMap.Coords.fromWGS84(14.4676344,50.1281042);
+    const map = new SMap(JAK.gel("map"), center, 12);
+    map.addDefaultLayer(SMap.DEF_BASE).enable();
+    map.addDefaultControls();
 
-        function odpoved(geocoder) {
-            const vysledky = geocoder.getResults()[0].results;
+    const layer = new SMap.Layer.Marker();
+    map.addLayer(layer);
+    layer.enable();
 
-            const pozice = vysledky[0].coords;
 
-            const znacka = JAK.mel("div");
-            const obrazek = JAK.mel(
-                "img",
-                {
-                    src: "../img/hously-logo-small.png"
-                },
-                {
-                    width: "35px",
-                    height: "35px"
-                }
-            );
-            znacka.appendChild(obrazek);
-            const card = new SMap.Card();
-            console.log("geocoder", geocoder._options.card_id);
 
-            card.getHeader().innerHTML = `<div class=visit_card>
-                                        <img src="../img/hously-logo-small.png">
-                                        <div class=card_title> Hously s.r.o</div>
-                                        </div>`;
+    // vytvoreni jednotlivych markerů
+    function odpoved(geocoder) {
+        const vysledky= geocoder.getResults()[0].results;
+        console.log("call", vysledky);
+        
+        const pozice=vysledky[0].coords;
+        const marker = new SMap.Marker(pozice, `marker-${vysledky[0].id}`);
+        console.log(marker);
+        layer.addMarker(marker);
 
-            card.getBody().innerHTML = geocoder._query;
-            card.getFooter().innerHTML = `<a href="/houses#${
-                geocoder._options.card_id
-            }" src="/building_id${geocoder._options.card_id}">home</a>`;
-            const marker = new SMap.Marker(pozice, null, { url: znacka });
-            marker.decorate(SMap.Marker.Feature.Card, card);
+    }
+    // vytvoreni sady markerů z listu adres
+    listofAdress.map(element=>{
+        new SMap.Geocoder(element, odpoved);
+    })
+    
 
-            layer.addMarker(marker);
-        }
-        //******************************************** */
-    });
+  });
+
+
+// new SMap.Geocoder("U hajovny 11, Praha", odpoved);
+// new SMap.Geocoder("Václavské náměstí 1, Praha", odpoved);
+    
+    
+
+
+
+
