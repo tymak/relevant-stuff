@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import CategoryList from "../Parts/category.jsx";
 import Citaty from "../Parts/citaty.jsx";
 import Citat from "../Parts/citat.jsx";
+import CvicneMenu from "../Parts/cvicneMenu.jsx";
 
 const App = () => {
   const [listCategory, setListCategory] = useState([]);
@@ -57,7 +58,7 @@ const App = () => {
   return (
     <>
       <h1>Chuck</h1>
-      <h2>listen to the stories of the legend</h2>
+      <h2>listen to the stories of the Chuck</h2>
       <div className="containerCitaty">
         <div className="categoryList">
           <h2>Check, how Chuck deal with all this stuff</h2>
@@ -82,6 +83,10 @@ const App = () => {
       </div>
       <div>
         <Citaty citaty={citaty} />
+      </div>
+
+      <div>
+        <CvicneMenu />
       </div>
     </>
   );

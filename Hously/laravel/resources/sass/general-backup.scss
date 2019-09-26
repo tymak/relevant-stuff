@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono|Ubuntu&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif; 
+}
+
+
+
+body.modal__open {
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    height: 10vh;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 1);
+    color:#fff;
+}
+
+.header__logo {
+    flex: 0 1 50%;
+    @media screen and (min-width:576px) {
+        flex: 0 1 20%;
+    }
+    div {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    img {
+        display: block;
+        margin-right: auto;
+        margin-left: 2rem;
+        padding: 5px;
+        max-width: 70px;
+        @media screen and (min-width:1144px) {
+            margin-left: 0;
+        }
+        background-position: center;
+    }
+}
+
+.header__menu {
+    display: flex;
+    justify-content: flex-start;
+    flex: 0 1 50%;
+    @media screen and (min-width:576px) {
+        justify-content: space-between;
+        flex: 0 1 80%;
+    }
+    flex-wrap: wrap;
+    max-width: 1144px;
+    margin:0 auto;
+    overflow: hidden;
+
+
+    &__logo {
+        flex: 0 1 25%;
+        height: 10vh;
+        @media screen and (min-width:576px) {
+            flex: 0 1 40%;
+        }
+        div {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        img {
+            display: block;
+            margin-right: auto;
+            margin-left: 2rem;
+            padding: 5px;
+            max-width: 70px;
+            @media screen and (min-width:1144px) {
+                margin-left: 0;
+            }
+            background-position: center;
+        }
+    }
+
+    &__links {
+        flex: 0 1 50%;
+        height: 10vh;
+        @media screen and (min-width:576px) {
+            flex: 0 1 40%;
+        }
+
+        &__container {
+            display: flex;
+            justify-content: flex-start;
+            @media screen and (min-width:576px) {
+                justify-content: flex-end;
+            }
+            align-items: center;
+            height: 100%;
+
+            div{
+                margin-right:1.5rem;
+                font-size: 1rem;
+                cursor: pointer;
+                a {
+                    color: #fff;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+}
+
+.auth__overlay {
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    top:0px;
+    z-index: 10;
+    background-color: rgba(47, 46, 46, 0.5);
+    &.modal__open {
+        display: flex;
+    }
+
+    &__modal {
+        display: none;
+        position: relative;
+        width: 95%;
+        max-height: 90vh;
+        @media screen and (min-width:576px) {
+            width: 50%;
+        }
+        margin: 0 auto;
+        padding:5%;
+        background-color:#fff;
+        box-shadow: 20px 18px 48px -8px rgba(0,0,0,0.75);
+        
+        &.modal__register {
+            overflow: scroll;
+            @media screen and (min-width:576px) {
+                overflow: hidden;
+            }
+        }
+
+        &.modal__open {
+            display: block;
+        }
+
+        &__close {
+            position: absolute;
+            top:6px;
+            right:18px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        form {
+            margin-top: 2rem;
+        }
+    }
+
+
+}
+
+.navigation {
+    position: absolute;
+    top:15px;
+    right:15px;
+    min-width: 50px;
+    min-height: 50px;
+    
+    @media screen and (min-width:576px) {
+        position: initial;
+        min-width: initial;
+        min-height: initial;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+    }
+    text-align: center;
+    overflow: hidden;
+
+    &__toggler{
+        display: block;
+        @media screen and (min-width:576px) {
+            display: none;
+        }
+        width: 0; 
+        height: 0; 
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #fff;
+        margin: 6px auto;
+        cursor: pointer;
+        transition: 0.5s ease-in;
+
+        &.open {
+            transform: rotate(180deg);
+        }
+    }
+
+    &__items {
+        display: flex;
+        @media screen and (min-width:576px) {
+            width: initial;
+            max-width: 1144px;
+            height: auto;
+            flex-direction: row;
+            justify-content: space-around;
+            
+        }
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 0;
+        height: 0;
+        margin: 0 auto;
+        overflow: hidden;
+        transition: 0.5s ease-in;
+
+        div {
+            flex: 0 0 30%;
+            &:hover {
+                background-color: #1879bf;
+            }
+        }
+
+        &.open {
+            height: 120px;
+            width: 120px;
+            @media screen and (min-width:576px) {
+                height: auto;
+            }
+        }
+    }
+}
+
+main {
+    max-width: 1144px;
+    margin:3rem auto;
+    @media screen and (max-width:1143px) {
+        width: 95%;
+    }
+}
+
+

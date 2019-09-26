@@ -1,0 +1,226 @@
+.house__rules {
+    width: 90%;
+    min-height: 300px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgba($base-blue, 0.1);
+    border: 0;
+}
+
+.page__main__dash {
+    display: flex;
+    justify-content: space-between;
+
+    .scrollable {
+        overflow: auto;
+    }
+
+    &__item {
+        min-height: 25vh;
+        background-color: rgba($base-blue, 0.5);
+        color: black;
+        margin: 2rem 0;
+
+        &.i__mid {
+            flex: 0 1 45%;
+        }
+
+        &.i__small {
+            flex: 0 1 25%;
+        }
+
+        &.i__big {
+            flex: 0 1 70%;
+        }
+
+        &.i__full {
+            flex: 0 1 100%;
+        }
+
+        &__head {
+            width: 100%;
+            background-color: $base-blue;
+            color: white;
+            text-align: center;
+        }
+
+        &__body {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+
+            .fixedHeight__flexContainer {
+                display: flex;
+                height: 500px;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+        }
+
+        .notices__list {
+            flex: 1 1 90%;
+            margin-bottom: 2rem;
+
+            &__item {
+                width: 95%;
+                margin: 0 auto;
+
+                textarea {
+                    width: 95%;
+                    background: rgba(#fff, 0.3);
+                    height: auto;
+                    border: 0.5px solid $secondary-blue;
+                    padding: 1rem;
+                }
+
+                p {
+                    text-align: left;
+                }
+
+                span {
+                    text-align: left;
+                    font-size: 0.8rem;
+                    line-height: 1rem;
+                    vertical-align: top;
+                }
+
+                span.item__permanent::after {
+                    content: "Permanent";
+                    margin-left: 1rem;
+                    padding: 4px;
+                    border-radius: 5px;
+                    font-size: 10px;
+                    background-color: $secondary-blue;
+                    color: #fff;
+                    line-height: 1rem;
+                    vertical-align: top;
+                }
+                .item__nonpermanent {
+                    display: inline-block;
+                    line-height: 1.35rem;
+
+                    button {
+                        height: 1rem;
+                        background: none;
+                        border: none;
+
+                        img {
+                            vertical-align: top;
+                            height: 0.9rem;
+                        }
+                    }
+                }
+            }
+            &__adminHandler {
+                flex: 1 1 10%;
+
+                button {
+                    border: none;
+                    background: none;
+                    img {
+                        height: 40px;
+                    }
+                }
+
+                a {
+                    color: $secondary-blue;
+                }
+
+                form > button {
+                    background-color: $orange;
+                    color: white;
+                }
+            }
+        }
+
+        table {
+            width: 90%;
+            margin: 1rem auto;
+
+            thead {
+                background-color: rgba($secondary-blue, 0.7);
+                color: #fff;
+            }
+
+            td {
+                min-width: 25%;
+            }
+        }
+
+        // .form__registerbuilding {
+        //     display: flex;
+        //     width: 70%;
+        //     margin: 0 auto;
+        //     justify-content: space-around;
+        // }
+
+        .form__container {
+            .form__item {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 0.5rem;
+            }
+
+            .form__submit {
+                background-color: $orange;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                display: block;
+                padding: 0.5rem 1rem;
+                margin: 1rem auto;
+            }
+        }
+    }
+
+    .chat__container {
+        max-height: 350px;
+        overflow: auto;
+    }
+
+    .chat__bubble {
+        position: relative;
+        background: $secondary-blue;
+        color: #fff;
+        border-radius: 0.4em;
+        width: 50%;
+        margin-top: 2rem;
+        padding: 1rem;
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border: 21px solid transparent;
+            margin-top: -21px;
+        }
+
+        &.b__left {
+            margin-left: 40%;
+            &:after {
+                left: 0;
+                border-right-color: $secondary-blue;
+                border-left: 0;
+                margin-left: -21px;
+            }
+        }
+
+        &.b__right {
+            margin-right: 40%;
+            &:after {
+                right: 0;
+                border-left-color: $secondary-blue;
+                border-right: 0;
+                margin-right: -21px;
+            }
+        }
+    }
+}
+
+#map {
+    min-width: 60vw;
+    min-height: 25vw;
+}
